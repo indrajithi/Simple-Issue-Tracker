@@ -1,0 +1,17 @@
+amqp==2.3.2
+anyjson==0.3.3
+billiard==3.5.0.4
+celery==4.2.1
+Django==2.1
+django-appconf==1.0.2
+django-celery==3.2.2
+django-celery-email==2.0.0
+django-celery-results==1.0.1
+djangorestframework==3.8.2
+kombu==4.2.1
+psycopg2==2.7.5
+python-crontab==2.3.4
+python-dateutil==2.7.3
+pytz==2018.5
+six==1.11.0
+vine==1.1.4
