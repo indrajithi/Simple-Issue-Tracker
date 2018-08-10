@@ -6,7 +6,7 @@ from celery import task
 from django.core.validators import validate_email
 import threading
 import time
-
+import traceback
 
 @task()
 def shedule_emails():
@@ -21,24 +21,26 @@ def shedule_emails():
 		issue_data = str(issue).split('-')
 		if issue_data[-2] == 'O':      #for all open issues
 			_user = User.objects.get(username=issue_data[-1])
-			email_now(_user, issue_data)
+			email_now(_user, issue_data, _user.email )
 			
 
 
-def email_now(_user, issue_data ):
+def email_now(_user, issue_data, email_address ):
     """
     Verify and send an email
     """
     try:
         validate_email(email_address)
-        send_email( 
+        print(email_address)
+        send_mail( 
             'Open Issue: #{}'.format(issue_data[0]),
             create_email_data(_user.first_name, issue_data),
             'issue@example.com',
-            _user.email,
+            [str(_user.email)],
             fail_silently=False,
                 )
     except:
+        traceback.print_exc()
         print('Unable to send email for issue {},'.format(issue_data[0]))
         print('Please configure redis and smtp in settings.py')
 
@@ -71,8 +73,7 @@ def email_trigger(seconds, issue_id):
     if issue_data[-1] != '': # issue assigned to someone
         _user = User.objects.get(username=str(issue_data[-1]).lstrip().rstrip())
         print("An email is sheduled to send after 12 minutes.")
-        t = threading.Timer(seconds, email_now, [_user, issue_data] )
+        t = threading.Timer(5, email_now, [_user, issue_data, _user.email])
         t.start()
-        
 
 

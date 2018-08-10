@@ -37,6 +37,7 @@ class Issue(models.Model):
         email_trigger(720, self.issue_id) #720 seconds (12 min)
 
 
+
 # This receiver handles token creation immediately a new user is created.
 @receiver(post_save, sender=User)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
