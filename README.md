@@ -50,16 +50,16 @@ Django Version:  2.1
 
 **Install requirements, crate user and migrate:**
 
-- `pip install -r requirements.txt`
+- `$ pip install -r requirements.txt`
 
-- `python manage.py createsuperuser`  
+- `$ python manage.py createsuperuser`  
 (while creating user please privide an email address)
 
-- `python manage.py makemigrations && python manage.py migrate`
+- `$ python manage.py makemigrations && python manage.py migrate`
 
 **Run serever**: 
 
-`python manage.py runserver`
+- `$ python manage.py runserver`
 
 
 ### Access Token
@@ -148,6 +148,6 @@ The database I used is `sqlite3`. After a successful `POST` call a new Issue ent
 For task scheduling I have used Celery and for email I have used gmail `smtp`.
 
 
-*This code is developed using python v3.5.2. on 4.10.0-28-generic kernel using 16.04.2-Ubuntu SMP x86_64 x86_64 x86_64 GNU/Linux.*
+*This code is developed using python v3.5.2. on 16.04.2-Ubuntu SMP x86_64 x86_64 GNU/Linux. 4.10.0-28-generic kernel*
 
 
