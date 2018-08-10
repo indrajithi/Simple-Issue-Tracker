@@ -32,9 +32,9 @@ def email_now(_user, issue_data ):
     try:
         validate_email(email_address)
         send_email( 
-            'Aircto Open Issue: #{}'.format(issue_data[0]),
+            'Open Issue: #{}'.format(issue_data[0]),
             create_email_data(_user.first_name, issue_data),
-            'issue@aircto.com',
+            'issue@example.com',
             _user.email,
             fail_silently=False,
                 )
@@ -51,12 +51,12 @@ def create_email_data(first_name, content=None):
         <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <title>Aircto Open Issue: #{}</title>
+            <title>Open Issue: #{}</title>
         </head>
         <body>
         Hello {},
 
-        This email is regarding your open issue on Aircto.
+        This email is regarding your open issue on.
         <h2> Issue: </h2>
         <pre>
         	{}
